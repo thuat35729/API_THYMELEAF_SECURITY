@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<ul>
+    <li th:each="sv,state:${dssv}">
+        <a th:href="@{|student?index=${state.index}|}">[[${sv.name}]]</a>
+    </li>
+</ul>
+<h2>Student detail</h2>
+<ul th:object="${sv}">
+<li>
+    <i>Name:</i><b th:text="*{name}"></b>
+</li>
+<li>
+    <i>Marks:</i><b th:text="*{marks}"></b>
+</li>
+<li>
+    <i>Gender:</i><b th:text="*{gender} ? 'Male' : 'Female'"></b>
+</li>
+<li>
+    <i>Contact:</i><b th:text="*{contact.email}"></b>
+</li>
+<li th:each="subjects:*{subjects}">
+    <i>Subject:</i><b th:text="${subjects}"></b>
+</li>
+<li th:switch="*{#arrays.length(subjects)}">
+    <i>Time: </i>
+    <b th:case="1">Moi Vao</b>
+    <b th:case="2">Sap Ra</b>
+    <b th:case="*">Ra Roi</b>
+</li>
+<li th:if="*{marks > 9}">Golder</li>
+</ul>
+</body>
+</html>

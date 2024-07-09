@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<img th:src="@{/image/hutao.png}" width="2000px" height="500px">
+<nav th:replace="~{/layout/menu.html}"></nav>
+<p th:text="${massage}"></p>
+<ul th:object="${sv}">
+    <l1 th:text="${sv.name}"></l1>
+    <l1 th:text="${sv.marks}"></l1>
+    <l1 th:text="*{contact.email}"></l1>
+    <l1 th:text="${sv.contact.phone}"></l1>
+    <l1 th:text="${sv.subjects[0]}"></l1>
+</ul>
+</body>
+</html>

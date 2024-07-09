@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h2>Tong Hop</h2>
+<ul>
+    <i>To day</i>
+    <li th:text="${#dates.format(date, 'EEE, dd-MM-yyyy')}"></li><!--    Dinh dang ngay-->
+    <p>List size</p>
+    <li th:text="${listSV.size()}"></li>
+</ul>
+<ul th:each="student: ${listSV}" th:object="${student}">
+    <hr>
+    <li>[[${student.name}]]</li>
+    <li>[[${student.marks}]]</li>
+    <li th:text="*{#arrays.length(subjects)}"></li>
+    <hr>
+    <li th:text="*{#strings.capitalizeWords(name)}"></li><!-- chu-->
+    <li th:text="*{#numbers.formatDecimal(marks, 0,'COMMA', 2, 'POINT')}"></li> <!-- Dinh dang so 'COMMA' dau phay 'POINT' khoang trang -->
+    <li th:text="${student.subjects.size()}"></li>
+</ul>
+</body>
+</html>

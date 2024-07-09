@@ -1,0 +1,53 @@
+[{
+  "name": "Nguyễn Văn Tèo",
+  "gender": true,
+  "marks": 7.5,
+  "subjects": [
+    "WEB205",
+    "COM 1081"
+  ],
+  "contact": {
+    "email": "teonv@gmail.com",
+    "phone": "0913745789"
+  }
+},
+  {
+    "name": "Nguyễn Văn Nở",
+    "gender": false,
+    "marks": 9.5,
+    "subjects": [
+      "WEB205",
+      "COM 1081",
+      "Ga Con"
+    ],
+    "contact": {
+      "email": "teonv@gmail.com",
+      "phone": "0913745789"
+    }
+  },
+  {
+    "name": "Nguyễn Văn Vở",
+    "gender": false,
+    "marks": 9.5,
+    "subjects": [
+      "COM 1081"
+    ],
+    "contact": {
+      "email": "teonv@gmail.com",
+      "phone": "0913745789"
+    }
+  },
+  {
+    "name": "Nguyễn Văn Tisto",
+    "gender": true,
+    "marks": 0.5,
+    "subjects": [
+      "WEB205",
+      "COM 1081"
+    ],
+    "contact": {
+      "email": "teonv@gmail.com",
+      "phone": "0913745789"
+    }
+  }
+]

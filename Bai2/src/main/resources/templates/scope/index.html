@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h3>@copes @amp, Parameters</h3>
+<ul>
+    <li>
+        A - Model: [(${A})]
+    </li>
+    <li>
+        B - Request: [[${B}]]
+    </li>
+    <li>
+        C - Session: [[${session.C}]]
+    </li>
+    <li>
+        D - Application: [(${application.D})]
+    </li>
+    <li>
+        X - Parameter: [[${param.x}]]
+    </li>
+</ul>
+<a href="scope?x=FPT_R">Poly</a>
+</body>
+</html>
