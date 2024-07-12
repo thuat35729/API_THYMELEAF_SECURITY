@@ -94,7 +94,6 @@ public class JackSonDemo2 {
         subjects.forEach(s -> {
             System.out.println("> Subject:" + s);
         });
-
     }
 
     private static void JackSonDemoS() throws Exception {
