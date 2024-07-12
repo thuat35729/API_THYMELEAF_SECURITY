@@ -13,9 +13,9 @@ import java.io.IOException;
 public class HomeController {
     @RequestMapping("/home/index")
     public String view(Model model) throws Exception {
-        model.addAttribute("massage", "Test tutol");
+        model.addAttribute("massage", "Test tutor");
         ObjectMapper mapper = new ObjectMapper();
-        String path = "D:\\Java6\\Bai2\\src\\main\\resources\\static\\Student.json";
+        String path = "D:\\Java6\\BacsicThymeleaf\\target\\classes\\static\\Student2.json";
         Student student = mapper.readValue(new File(path), Student.class);
         model.addAttribute("sv", student);
         return "home/index";

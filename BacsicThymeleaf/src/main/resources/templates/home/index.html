@@ -10,11 +10,11 @@
 <nav th:replace="~{/layout/menu.html}"></nav>
 <p th:text="${massage}"></p>
 <ul th:object="${sv}">
-    <l1 th:text="${sv.name}"></l1>
-    <l1 th:text="${sv.marks}"></l1>
-    <l1 th:text="*{contact.email}"></l1>
-    <l1 th:text="${sv.contact.phone}"></l1>
-    <l1 th:text="${sv.subjects[0]}"></l1>
+    <li th:text="${sv.name}"></li>
+    <li th:text="${sv.marks}"></li>
+    <li th:text="*{contact.email}"></li>
+    <li th:text="${sv.contact.phone}"></li>
+    <li th:text="${sv.subjects[0]}"></li>
 </ul>
 </body>
 </html>
