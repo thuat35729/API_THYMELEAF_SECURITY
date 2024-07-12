@@ -72,7 +72,7 @@ public class JackSonDemo2 {
     }
 
     private static void JackSonDemoL() throws Exception {
-        String path = "D:\\Java6\\LamBa\\src\\main\\resources\\Student.json";
+        String path = "D:\\Java6\\StreamAPI_JackSonAPI\\src\\main\\resources\\Student.json";
         TypeReference<List<Student>> type = new TypeReference<List<Student>>() {
         };
         ObjectMapper mapper = new ObjectMapper();
@@ -97,7 +97,7 @@ public class JackSonDemo2 {
     }
 
     private static void JackSonDemoS() throws Exception {
-        String path = "D:\\Java6\\LamBa\\src\\main\\resources\\Students.json";
+        String path = "D:\\Java6\\StreamAPI_JackSonAPI\\src\\main\\resources\\Students.json";
         ObjectMapper mapper = new ObjectMapper();
         Student student = mapper.readValue(new File(path), Student.class);
         System.out.println(">> Name" + student.getName());

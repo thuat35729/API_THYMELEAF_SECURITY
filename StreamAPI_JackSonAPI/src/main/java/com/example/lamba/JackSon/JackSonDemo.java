@@ -14,7 +14,7 @@ public class JackSonDemo {
     }
 
     private static void demoJS2() throws Exception {
-        String path = "D:\\Java6\\LamBa\\src\\main\\resources\\Student.json";
+        String path = "D:\\Java6\\StreamAPI_JackSonAPI\\src\\main\\resources\\Student.json";
         ObjectMapper mapper = new ObjectMapper();
         JsonNode students = mapper.readTree(new File(path));
         for (JsonNode student: students
