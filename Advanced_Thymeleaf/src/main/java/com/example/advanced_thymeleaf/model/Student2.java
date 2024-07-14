@@ -8,17 +8,17 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Student2 {
-    @NotBlank(message = "Không được để trống")
-    @Email(message = "không đungs đinhj danh email")
+    @NotBlank(message = "{message.email}")
+    @Email(message = "không đúng danh danh email")
     String email;
-    @NotBlank(message = "Không được để trống")
+    @NotBlank(message = "{message.name}")
     String fullname;
-    @NotNull(message = "Không để trống điểm")
+    @NotNull(message = "{message.marks}")
     @PositiveOrZero(message = "Điểm phải lớn hơn 0")
     @Max(value = 10, message = "Điểm phải nhỏ hơn hoặc bằng 10")
     Double marks;
-    @NotNull(message = "Chọn giới tính")
+    @NotNull(message = "{message.gender}")
     Boolean gender;
-    @NotBlank(message = "Chọn quốc tịch")
+    @NotBlank(message = "{message.nationality}")
     String country;
 }

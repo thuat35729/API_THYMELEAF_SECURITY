@@ -9,12 +9,12 @@
 <h3>Data Biding</h3>
 <form action="/student/validate" method="post" th:object="${sv}">
     <p th:text="${message}"></p>
-    <input th:field="*{email}" placeholder="Email Address?"><i th:errors="*{email}"></i><br>
-    <input th:field="*{fullname}" placeholder="Full Name?"><i th:errors="*{fullname}"></i><br>
-    <input th:field="*{marks}" placeholder="Avegare Marks?"><i th:errors="*{marks}"> </i><br>
+    <input th:field="*{email}" placeholder="Email Address?"><i th:errors="*{email}" th:text="#{message.email}"></i><br>
+    <input th:field="*{fullname}" placeholder="Full Name?"><i th:errors="*{fullname}" th:text="#{message.name}"></i><br>
+    <input th:field="*{marks}" placeholder="Avegare Marks?"><i th:errors="*{marks}" th:text="#{message.marks}"> </i><br>
     <input th:field="*{gender}" th:value="true" type="radio">Male
     <input th:field="*{gender}" th:value="false" type="radio">Female<br>
-    <i th:errors="*{gender}"></i>
+    <i th:errors="*{gender}" th:text="#{message.gender}"></i>
     <select th:field="*{country}">
         <option value="">
             Nationality
@@ -29,10 +29,9 @@
             Japan
         </option>
     </select>
-    <i th:errors="*{country}"></i>
+    <i th:errors="*{country}"th:text="#{message.nationality}"></i>
     <hr>
     <button>Save</button>
 </form>
-
 </body>
 </html>
