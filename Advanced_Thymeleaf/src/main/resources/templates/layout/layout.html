@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:fragment="dynamic(view)">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tổ chức layout</title>
+</head>
+<body>
+<header>
+    <img th:src="@{/img/anhsangdemsuongmu.png}" width="50px">
+</header>
+<hr>
+<nav th:insert="~{/layout/menu.html ::navbar}">
+<!--    Thay vào trong <nav>-->
+</nav>
+<hr>
+<main th:replace="${view}"></main>
+<!--lấy từ dynamic bên trên thay vào main rồi thay lại bên view-->
+<hr>
+<hr>
+<hr>
+<footer>
+    End r
+</footer>
+</body>
+</html>
