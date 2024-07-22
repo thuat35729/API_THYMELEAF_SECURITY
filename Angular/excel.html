@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="/libs/angular.min.js"></script>
+    <script src="/libs/angular-route.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/6.26.0/polyfill.js"></script>
+    
+</head>
+<body ng-app="app" ng-controller="ctrl">
+<input type="file" onchange="angular.element(this).scope().import(this.file)">
+<script src="excel-ctrl.js"></script>
+</body>
+
+</html>

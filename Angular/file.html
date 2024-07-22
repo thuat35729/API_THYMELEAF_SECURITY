@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RESTful - File Manager</title>
+    <script src="/libs/angular.min.js"></script>
+    <script src="/libs/angular-route.js"></script>
+</head>
+<body>
+    <div ng-app="app" ng-controller="ctrl">
+        <label>
+            Upload Files:
+            <input type="file" accept="image/*"  multiple onchange="angular.element(this).scope().upload(this.files)"  />
+        </label>
+        <hr>
+        <label ng-repeat="item in filenames" title="Double click to delete">
+            <img ng-src="{{url(item)}}" ng-dblclick="delete(item)" width="50px" height="50px">
+        </label>
+    </div>
+    <script src="file-ctrl.js"></script>
+</body>
+</html>
