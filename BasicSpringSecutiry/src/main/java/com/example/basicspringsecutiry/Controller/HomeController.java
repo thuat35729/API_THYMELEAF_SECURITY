@@ -14,16 +14,15 @@ public class HomeController {
         return "home/home";
     }
 
-//    @RequestMapping("/home/about")
-//    public String about(Model model) {
-//        model.addAttribute("message", "This is introduction page");
-//        return "home/home"; // Ensure the template name matches
-//    }
-//
-
-    @PostMapping("/login")
-    public String lo() {
-        // This endpoint is not necessary if you're using default Spring Security configuration.
-        return "/home/home";
+    @GetMapping("/leaders")
+    public String leader(Model model) {
+        model.addAttribute("message", "This is introduction page");
+        return "home/leader"; // Ensure the template name matches
     }
+    @GetMapping("/systems")
+    public String systems(Model model) {
+        model.addAttribute("message", "This is introduction page");
+        return "home/systems"; // Ensure the template name matches
+    }
+
 }

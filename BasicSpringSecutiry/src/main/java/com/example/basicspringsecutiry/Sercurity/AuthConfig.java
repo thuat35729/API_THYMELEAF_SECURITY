@@ -12,51 +12,70 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
+import org.springframework.security.provisioning.JdbcUserDetailsManager;
+import org.springframework.security.provisioning.UserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 
-@Configuration
-@EnableWebSecurity
-public class AuthConfig {
+import javax.sql.DataSource;
 
+@Configuration
+//@EnableWebSecurity
+public class AuthConfig {
+    // mã hóa mật khẩu
 //    @Bean
 //    public PasswordEncoder passwordEncoder() {
 //        return new BCryptPasswordEncoder();
 //    }
-
     @Bean
-    public InMemoryUserDetailsManager userDetailsManager() {
-        UserDetails user1 = User.builder()
-                .username("user1")
-                .password("{noop}123")
-                .roles("EMPLOYEE")
-                .build();
+    public UserDetailsManager userDetailsManager(DataSource dataSource) {
+        JdbcUserDetailsManager manager = new JdbcUserDetailsManager(dataSource);
 
-        UserDetails user2 = User.builder()
-                .username("user2")
-                .password("{noop}123")
-                .roles("EMPLOYEE", "MANAGER")
-                .build();
+        // Corrected query: Use 1 (true) as the enabled status
+        manager.setUsersByUsernameQuery("SELECT username, password, 1 as enabled FROM users WHERE username = ?");
 
-        UserDetails user3 = User.builder()
-                .username("user3")
-                .password("{noop}123")
-                .roles("EMPLOYEE", "MANAGER", "ADMIN")
-                .build();
-
-        return new InMemoryUserDetailsManager(user1, user2, user3);
+        // Custom query to fetch user authorities
+        manager.setAuthoritiesByUsernameQuery("SELECT username, authority FROM authorities WHERE username = ?");
+//        return new JdbcUserDetailsManager(dataSource);
+        return manager;
     }
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests(authorizeRequests -> authorizeRequests
+                        .requestMatchers("/").hasRole("EMPLOYEE")
+                        .requestMatchers("/leaders/**").hasRole("MANAGER")
+                        .requestMatchers("/systems/**").hasRole("ADMIN")
                         .anyRequest().authenticated()
                 )
                 .formLogin(formLogin -> formLogin
-                .loginPage("/home/login").loginProcessingUrl("/login") // Specify the custom login page
-                .permitAll()
-        ); // Enable HTTP Basic Authentication
+                        .loginPage("/home/login").loginProcessingUrl("/login") // Specify the custom login page
+                        .permitAll()
+                ).logout(logout -> logout.permitAll())
+                .exceptionHandling(configurer -> configurer.accessDeniedPage("/access")); // Enable HTTP Basic Authentication
 
         return http.build();
     }
+//    @Bean
+//    public InMemoryUserDetailsManager userDetailsManager() {
+//        UserDetails user1 = User.builder()
+//                .username("user1")
+//                .password("{noop}123")
+//                .roles("EMPLOYEE")
+//                .build();
+//
+//        UserDetails user2 = User.builder()
+//                .username("user2")
+//                .password("{noop}123")
+//                .roles("EMPLOYEE", "MANAGER")
+//                .build();
+//
+//        UserDetails user3 = User.builder()
+//                .username("user3")
+//                .password("{noop}123")
+//                .roles("EMPLOYEE", "MANAGER", "ADMIN")
+//                .build();
+//
+//        return new InMemoryUserDetailsManager(user1, user2, user3);
+//    }
 }
